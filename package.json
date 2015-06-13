@@ -1,7 +1,7 @@
 {
   "name": "html-class-manager",
   "version": "0.1.0",
-  "description": "",
+  "description": "Manage html classes and generate className string.",
   "main": "index.js",
   "scripts": {
     "test": "mocha"
