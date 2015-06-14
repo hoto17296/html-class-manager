@@ -12,18 +12,22 @@ var HtmlClassManager = require('html-class-manager');
 var classes = new HtmlClassManager();
 
 // Add classes
-classes.add('foo', 'bar').toString();  //=> 'foo bar'
-classes.add(['hoge', 'piyo']).toString();  //=> 'foo bar hoge piyo'
+classes.add('foo bar');       // space separated classes
+classes.add('foo', 'bar');    // multi arguments
+classes.add(['foo', 'bar']);  // array
+
+// Generate className string
+classes.add('hoge', 'fuga').toString();  //=> 'hoge fuga'
 
 // Keeps classes unique
-classes.add('foo', 'bar', 'buzz').toString();  //=> 'foo bar hoge piyo buzz'
+classes.add('foo bar').add('foo').toString();  //=> 'foo bar'
 
 // Remove classes
-classes.remove('hoge', 'piyo').toString();  //=> 'foo bar buzz'
+classes.add('foo bar buzz').remove('foo', 'buzz').toString();  //=> 'bar'
 
 // Get as array
-classes.getAll();  //=> ['foo', 'bar', 'buzz']
+classes.add('foo bar').getAll();  //=> ['foo', 'bar']
 
 // Remove all classes
-classes.clear().toString();  //=> ''
+classes.add('foo bar').clear().toString();  //=> ''
 ```
